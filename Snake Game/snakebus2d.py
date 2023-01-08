@@ -1,6 +1,7 @@
 import pygame
 import time
 import os
+import sys
 
 fps = 5
 
@@ -13,7 +14,10 @@ button = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 # Get the number of joysticks
 joystick_count = pygame.joystick.get_count()
-print(joystick_count)
+if joystick_count == 0:
+    print("error = no controller connected -- press enter to quit")
+    input()
+    sys.exit()
 
 # initiliz joystick
 joystick = pygame.joystick.Joystick(0)
