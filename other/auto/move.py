@@ -6,3 +6,4 @@ test = 38
 pyautogui.moveTo(-745, 950)
 pyautogui.click()
 pyautogui.write(text)
+print("google!")
