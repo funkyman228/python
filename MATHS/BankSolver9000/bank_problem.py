@@ -12,6 +12,7 @@ posc = 0
 os.system('cls')
 
 while True:
+    os.system('cls')
     del valA
     del valB
     del valC
@@ -125,7 +126,8 @@ while True:
 
     if len(valC) == 0:
         print("No solution found :(")
-        sys.exit()
+        input("press enter to reset")
+        continue
 
     for i in valC:
         if i > max and valB[posc] >= 0:
@@ -148,4 +150,3 @@ while True:
     print("solved in", round((time.time() - start)/60, 2), "mins")
     print()
     input("press enter to reset")
-    os.system('cls')
