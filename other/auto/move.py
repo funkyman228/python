@@ -2,6 +2,7 @@ import pyautogui
 
 text = "Work on what would become the Antonov An 225 would begin in 1984 with a from the Soviet government for a large airlifter as a replacement for the Myasishchev VM-T."
 test = 38
+a = 1
 
 pyautogui.moveTo(-745, 950)
 pyautogui.click()
