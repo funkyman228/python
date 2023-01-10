@@ -3,14 +3,14 @@ import sys
 
 pygame.init()
 
-screenver = 1440
-screenhor = 2560
+screenver = 720
+screenhor = 1280
 speed = 1
 
 screen = pygame.display.set_mode((screenhor, screenver))
 pygame.display.set_caption('Runner')
 clock = pygame.time.Clock()
-pygame.display.toggle_fullscreen()
+#pygame.display.toggle_fullscreen()
 
 apple = pygame.image.load('snake2d/test image.png')
 width, height = apple.get_size()
