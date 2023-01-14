@@ -7,9 +7,9 @@ pygame.init()
 
 screenver = 720
 screenhor = 1280
-speed = 1
-framerate = 10
-framerate = 1000000/framerate
+speed = 2
+framerate = 144
+framerate = 1/framerate
 
 screen = pygame.display.set_mode((screenhor, screenver))
 pygame.display.set_caption('Runner')
@@ -29,14 +29,20 @@ posy = 0
 i = 0
 f = 0
 a = 0
+tick = 0
 
-frame = time.time_ns()
+frame = time.time()
 
 for event in pygame.event.get():
     pass
 
+def wait(tickw):
+    frame_buffer = tickw+framerate
+    while time.time() < frame_buffer:
+        pass
+
 def mloop():
-    frame = time.time_ns()
+    frame = time.time()
     direc = 0
     direu = 0
     posx = 0
@@ -45,11 +51,11 @@ def mloop():
     i = 0
     f = 0
     a = 0
-    while True:
-        tick = time.time_ns()
-        if i == 1000:
-            tim = (tick - frame)/1000000
-            print(f' fps = {round(tim)} {framerate}', end='\r')
+    while a < 2000:
+        tick = time.time()
+        if i == 10:
+            tim = 10/(tick - frame)
+            print(f' fps = {round(tim)}', end='\r')
             frame = tick
             i = 0
 
@@ -76,9 +82,10 @@ def mloop():
         f += 1
         a += 1
 
-        if f == 1000:
+        if f == 1:
             screen.fill((0, 0, 0))
             screen.blit(apple, (posx, posy))
+            #wait(tick)
             pygame.display.update()
 
             for event in pygame.event.get():
@@ -87,11 +94,11 @@ def mloop():
                     sys.exit
             f = 0
 
-        frame_buffer = tick+10000
-        while time.time_ns() < frame_buffer:
-            pass
+        wait(tick)
+
     #    clock.tick(1000)
 
 mloop()
 
-#cProfile.run('mloop()', 'testgame2.profile')
+#cProfile.run('mloop()', 'testgame3.profile')
+# snakeviz testgame3.profile
